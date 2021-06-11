@@ -1,0 +1,38 @@
+//
+//  InvestimentsTableCell.swift
+//  YandexInvestiments
+//
+//  Created by Илья Малахов on 09.06.2021.
+//
+
+import UIKit
+
+class InvestimentsTableCell: UITableViewCell {
+
+    @IBOutlet weak var companyIcon: UIImageView!
+    @IBOutlet weak var investimentName: UILabel!
+    @IBOutlet weak var companyName: UILabel!
+    @IBOutlet weak var favouriteIcon: UIImageView!
+    @IBOutlet weak var price: UILabel!
+    @IBOutlet weak var difference: UILabel!
+    
+    public func setup(investimentName: String, companyName: String, price: String, difference: String) {
+        companyIcon.backgroundColor = .red
+        companyIcon.tintColor = .red
+        
+        self.investimentName.text = investimentName
+        self.investimentName.sizeToFit()
+        
+        self.companyName.text = companyName
+        self.companyName.sizeToFit()
+        
+        favouriteIcon.backgroundColor = .blue
+        favouriteIcon.tintColor = .blue
+        
+        self.price.text = price
+        self.price.sizeToFit()
+        
+        self.difference.text = difference
+        self.difference.sizeToFit()
+    }
+}

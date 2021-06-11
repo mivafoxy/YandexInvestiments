@@ -9,21 +9,45 @@
 /* Begin PBXBuildFile section */
 		EDA04D5F266FCBBE0065576A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA04D5E266FCBBE0065576A /* AppDelegate.swift */; };
 		EDA04D61266FCBBE0065576A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA04D60266FCBBE0065576A /* SceneDelegate.swift */; };
-		EDA04D63266FCBBE0065576A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA04D62266FCBBE0065576A /* ViewController.swift */; };
+		EDA04D63266FCBBE0065576A /* InvestimentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA04D62266FCBBE0065576A /* InvestimentsViewController.swift */; };
 		EDA04D66266FCBBE0065576A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDA04D64266FCBBE0065576A /* Main.storyboard */; };
 		EDA04D68266FCBBF0065576A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EDA04D67266FCBBF0065576A /* Assets.xcassets */; };
 		EDA04D6B266FCBBF0065576A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDA04D69266FCBBF0065576A /* LaunchScreen.storyboard */; };
+		EDA04D7B2670E6EA0065576A /* InvestimentsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA04D792670E6EA0065576A /* InvestimentsTableCell.swift */; };
+		EDA04D7C2670E6EA0065576A /* InvestimentsTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDA04D7A2670E6EA0065576A /* InvestimentsTableCell.xib */; };
+		EDA04D802670F50C0065576A /* InvestimentCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA04D7E2670F50C0065576A /* InvestimentCollectionCell.swift */; };
+		EDA04D812670F50C0065576A /* InvestimentCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDA04D7F2670F50C0065576A /* InvestimentCollectionCell.xib */; };
+		EDA04D8E26724BE50065576A /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA04D8C26724BE50065576A /* CardViewController.swift */; };
+		EDA04D9326724CD10065576A /* Card.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDA04D9226724CD10065576A /* Card.storyboard */; };
+		EDAC313F2673840D009DA903 /* SuggestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDAC313E2673840D009DA903 /* SuggestionsViewController.swift */; };
+		EDAC314226738492009DA903 /* Suggestions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDAC314126738492009DA903 /* Suggestions.storyboard */; };
+		EDAC3146267388B3009DA903 /* SuggestionCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDAC3144267388B3009DA903 /* SuggestionCollectionCell.swift */; };
+		EDAC3147267388B3009DA903 /* SuggestionCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDAC3145267388B3009DA903 /* SuggestionCollectionCell.xib */; };
+		EDAC314B26739474009DA903 /* CardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDAC314926739474009DA903 /* CardViewCell.swift */; };
+		EDAC314C26739474009DA903 /* CardViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDAC314A26739474009DA903 /* CardViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		EDA04D5B266FCBBE0065576A /* YandexInvestiments.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YandexInvestiments.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDA04D5E266FCBBE0065576A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDA04D60266FCBBE0065576A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		EDA04D62266FCBBE0065576A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EDA04D62266FCBBE0065576A /* InvestimentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestimentsViewController.swift; sourceTree = "<group>"; };
 		EDA04D65266FCBBE0065576A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EDA04D67266FCBBF0065576A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EDA04D6A266FCBBF0065576A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EDA04D6C266FCBBF0065576A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EDA04D792670E6EA0065576A /* InvestimentsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestimentsTableCell.swift; sourceTree = "<group>"; };
+		EDA04D7A2670E6EA0065576A /* InvestimentsTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvestimentsTableCell.xib; sourceTree = "<group>"; };
+		EDA04D7E2670F50C0065576A /* InvestimentCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestimentCollectionCell.swift; sourceTree = "<group>"; };
+		EDA04D7F2670F50C0065576A /* InvestimentCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvestimentCollectionCell.xib; sourceTree = "<group>"; };
+		EDA04D8C26724BE50065576A /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
+		EDA04D9226724CD10065576A /* Card.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Card.storyboard; sourceTree = "<group>"; };
+		EDAC313E2673840D009DA903 /* SuggestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsViewController.swift; sourceTree = "<group>"; };
+		EDAC314126738492009DA903 /* Suggestions.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Suggestions.storyboard; sourceTree = "<group>"; };
+		EDAC3144267388B3009DA903 /* SuggestionCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionCollectionCell.swift; sourceTree = "<group>"; };
+		EDAC3145267388B3009DA903 /* SuggestionCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuggestionCollectionCell.xib; sourceTree = "<group>"; };
+		EDAC314926739474009DA903 /* CardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewCell.swift; sourceTree = "<group>"; };
+		EDAC314A26739474009DA903 /* CardViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +80,51 @@
 		EDA04D5D266FCBBE0065576A /* YandexInvestiments */ = {
 			isa = PBXGroup;
 			children = (
+				EDAC313D267383CD009DA903 /* Suggestions */,
+				EDA04D8326724AD30065576A /* InvestimentCard */,
+				EDA04D732670DFE90065576A /* InvestimentsList */,
 				EDA04D5E266FCBBE0065576A /* AppDelegate.swift */,
 				EDA04D60266FCBBE0065576A /* SceneDelegate.swift */,
-				EDA04D62266FCBBE0065576A /* ViewController.swift */,
-				EDA04D64266FCBBE0065576A /* Main.storyboard */,
 				EDA04D67266FCBBF0065576A /* Assets.xcassets */,
 				EDA04D69266FCBBF0065576A /* LaunchScreen.storyboard */,
 				EDA04D6C266FCBBF0065576A /* Info.plist */,
 			);
 			path = YandexInvestiments;
+			sourceTree = "<group>";
+		};
+		EDA04D732670DFE90065576A /* InvestimentsList */ = {
+			isa = PBXGroup;
+			children = (
+				EDA04D7E2670F50C0065576A /* InvestimentCollectionCell.swift */,
+				EDA04D7F2670F50C0065576A /* InvestimentCollectionCell.xib */,
+				EDA04D62266FCBBE0065576A /* InvestimentsViewController.swift */,
+				EDA04D64266FCBBE0065576A /* Main.storyboard */,
+				EDA04D792670E6EA0065576A /* InvestimentsTableCell.swift */,
+				EDA04D7A2670E6EA0065576A /* InvestimentsTableCell.xib */,
+			);
+			path = InvestimentsList;
+			sourceTree = "<group>";
+		};
+		EDA04D8326724AD30065576A /* InvestimentCard */ = {
+			isa = PBXGroup;
+			children = (
+				EDA04D8C26724BE50065576A /* CardViewController.swift */,
+				EDA04D9226724CD10065576A /* Card.storyboard */,
+				EDAC314926739474009DA903 /* CardViewCell.swift */,
+				EDAC314A26739474009DA903 /* CardViewCell.xib */,
+			);
+			path = InvestimentCard;
+			sourceTree = "<group>";
+		};
+		EDAC313D267383CD009DA903 /* Suggestions */ = {
+			isa = PBXGroup;
+			children = (
+				EDAC313E2673840D009DA903 /* SuggestionsViewController.swift */,
+				EDAC314126738492009DA903 /* Suggestions.storyboard */,
+				EDAC3144267388B3009DA903 /* SuggestionCollectionCell.swift */,
+				EDAC3145267388B3009DA903 /* SuggestionCollectionCell.xib */,
+			);
+			path = Suggestions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,8 +185,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDA04D6B266FCBBF0065576A /* LaunchScreen.storyboard in Resources */,
+				EDAC3147267388B3009DA903 /* SuggestionCollectionCell.xib in Resources */,
+				EDA04D812670F50C0065576A /* InvestimentCollectionCell.xib in Resources */,
+				EDAC314C26739474009DA903 /* CardViewCell.xib in Resources */,
+				EDA04D9326724CD10065576A /* Card.storyboard in Resources */,
 				EDA04D68266FCBBF0065576A /* Assets.xcassets in Resources */,
+				EDAC314226738492009DA903 /* Suggestions.storyboard in Resources */,
 				EDA04D66266FCBBE0065576A /* Main.storyboard in Resources */,
+				EDA04D7C2670E6EA0065576A /* InvestimentsTableCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,9 +203,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDA04D63266FCBBE0065576A /* ViewController.swift in Sources */,
+				EDA04D63266FCBBE0065576A /* InvestimentsViewController.swift in Sources */,
 				EDA04D5F266FCBBE0065576A /* AppDelegate.swift in Sources */,
+				EDA04D8E26724BE50065576A /* CardViewController.swift in Sources */,
+				EDAC314B26739474009DA903 /* CardViewCell.swift in Sources */,
 				EDA04D61266FCBBE0065576A /* SceneDelegate.swift in Sources */,
+				EDA04D802670F50C0065576A /* InvestimentCollectionCell.swift in Sources */,
+				EDAC3146267388B3009DA903 /* SuggestionCollectionCell.swift in Sources */,
+				EDA04D7B2670E6EA0065576A /* InvestimentsTableCell.swift in Sources */,
+				EDAC313F2673840D009DA903 /* SuggestionsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
