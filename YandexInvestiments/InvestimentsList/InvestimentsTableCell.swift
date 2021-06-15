@@ -16,23 +16,28 @@ class InvestimentsTableCell: UITableViewCell {
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var difference: UILabel!
     
-    public func setup(investimentName: String, companyName: String, price: String, difference: String) {
+    public var model: InvestimentModel?
+    
+    public func setup(model: InvestimentModel) {
+        
+        self.model = model
+        
         companyIcon.backgroundColor = .red
         companyIcon.tintColor = .red
         
-        self.investimentName.text = investimentName
+        self.investimentName.text = model.investimentName
         self.investimentName.sizeToFit()
         
-        self.companyName.text = companyName
+        self.companyName.text = model.companyName
         self.companyName.sizeToFit()
         
         favouriteIcon.backgroundColor = .blue
         favouriteIcon.tintColor = .blue
         
-        self.price.text = price
+        self.price.text = model.price
         self.price.sizeToFit()
         
-        self.difference.text = difference
+        self.difference.text = model.dynamic
         self.difference.sizeToFit()
     }
 }

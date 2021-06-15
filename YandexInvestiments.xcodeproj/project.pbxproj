@@ -25,6 +25,7 @@
 		EDAC3147267388B3009DA903 /* SuggestionCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDAC3145267388B3009DA903 /* SuggestionCollectionCell.xib */; };
 		EDAC314B26739474009DA903 /* CardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDAC314926739474009DA903 /* CardViewCell.swift */; };
 		EDAC314C26739474009DA903 /* CardViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDAC314A26739474009DA903 /* CardViewCell.xib */; };
+		EDE0F30E2678E79E0088AA67 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE0F30D2678E79E0088AA67 /* UIView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		EDAC3145267388B3009DA903 /* SuggestionCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuggestionCollectionCell.xib; sourceTree = "<group>"; };
 		EDAC314926739474009DA903 /* CardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewCell.swift; sourceTree = "<group>"; };
 		EDAC314A26739474009DA903 /* CardViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardViewCell.xib; sourceTree = "<group>"; };
+		EDE0F30D2678E79E0088AA67 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 		EDA04D5D266FCBBE0065576A /* YandexInvestiments */ = {
 			isa = PBXGroup;
 			children = (
+				EDE0F30B2678E7720088AA67 /* Commons */,
 				EDAC313D267383CD009DA903 /* Suggestions */,
 				EDA04D8326724AD30065576A /* InvestimentCard */,
 				EDA04D732670DFE90065576A /* InvestimentsList */,
@@ -125,6 +128,22 @@
 				EDAC3145267388B3009DA903 /* SuggestionCollectionCell.xib */,
 			);
 			path = Suggestions;
+			sourceTree = "<group>";
+		};
+		EDE0F30B2678E7720088AA67 /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				EDE0F30C2678E77A0088AA67 /* Extensions */,
+			);
+			path = Commons;
+			sourceTree = "<group>";
+		};
+		EDE0F30C2678E77A0088AA67 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				EDE0F30D2678E79E0088AA67 /* UIView+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,6 +230,7 @@
 				EDA04D802670F50C0065576A /* InvestimentCollectionCell.swift in Sources */,
 				EDAC3146267388B3009DA903 /* SuggestionCollectionCell.swift in Sources */,
 				EDA04D7B2670E6EA0065576A /* InvestimentsTableCell.swift in Sources */,
+				EDE0F30E2678E79E0088AA67 /* UIView+Extension.swift in Sources */,
 				EDAC313F2673840D009DA903 /* SuggestionsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

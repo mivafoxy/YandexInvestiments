@@ -7,6 +7,22 @@
 
 import UIKit
 
+struct InvestimentModel {
+    let investimentName: String
+    let companyName: String
+    let price: String
+    let dynamic: String
+    let isFavourite: Bool
+    
+    init(_ investimentName: String, _ companyName: String, _ price: String, _ dynamic: String, _ isFavourite: Bool) {
+        self.investimentName = investimentName
+        self.companyName = companyName
+        self.price = price
+        self.dynamic = dynamic
+        self.isFavourite = isFavourite
+    }
+}
+
 class InvestimentsViewController: UIViewController {
 
     @IBOutlet weak var selectorCollectionView: UICollectionView!
@@ -15,15 +31,18 @@ class InvestimentsViewController: UIViewController {
     private let tableCellId = String(describing: InvestimentsTableCell.self)
     private let selectorCellId = String(describing: InvestimentCollectionCell.self)
     
+    // TODO: - make delegate for this.
+    private var suggestionsViewController: SuggestionsViewController?
+    
     private let tableViewStub = [
-        ("YNDX","Yandex,LLC","4 764,6 ₽","+55 ₽ (1,15%)"),
-        ("AAPL", "Apple INC.", "$131.93", "+$0.12 (1,15%)"),
-        ("GOOGL", "Alphabet Class A", "$1 825", "+$0.12 (1,15%)"),
-        ("AMZN", "Amazon.com", "$3 204", "-$0.12 (1,15%)"),
-        ("BAC", "Bank of America Corp", "$3 204", "+$0.12 (1,15%)"),
-        ("MSFT", "Microsoft Corporation", "$3 204", "+$0.12 (1,15%)"),
-        ("TSLA", "Tesla Motors", "$3 204", "+$0.12 (1,15%)"),
-        ("MA", "Matercard", "$3 204", "+$0.12 (1,15%)")
+        InvestimentModel("YNDX","Yandex,LLC","4 764,6 ₽","+55 ₽ (1,15%)", false),
+        InvestimentModel("AAPL", "Apple INC.", "$131.93", "+$0.12 (1,15%)", true),
+        InvestimentModel("GOOGL", "Alphabet Class A", "$1 825", "+$0.12 (1,15%)", false),
+        InvestimentModel("AMZN", "Amazon.com", "$3 204", "-$0.12 (1,15%)", false),
+        InvestimentModel("BAC", "Bank of America Corp", "$3 204", "+$0.12 (1,15%)", false),
+        InvestimentModel("MSFT", "Microsoft Corporation", "$3 204", "+$0.12 (1,15%)", true),
+        InvestimentModel("TSLA", "Tesla Motors", "$3 204", "+$0.12 (1,15%)", true),
+        InvestimentModel("MA", "Matercard", "$3 204", "+$0.12 (1,15%)", true)
     ]
     
     private let selector = ["Stocks", "Favorites"]
@@ -64,7 +83,7 @@ extension InvestimentsViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: tableCellId, for: indexPath) as! InvestimentsTableCell
         
         let stub = tableViewStub[indexPath.row]
-        cell.setup(investimentName: stub.0, companyName: stub.1, price: stub.2, difference: stub.3)
+        cell.setup(model: stub)
         
         if indexPath.row % 2 == 0 {
             cell.backgroundColor = .gray
@@ -75,6 +94,8 @@ extension InvestimentsViewController: UITableViewDataSource {
         return cell
     }
 }
+
+// MARK: - UITableViewDelegate
 
 extension InvestimentsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -117,10 +138,34 @@ extension InvestimentsViewController: UISearchResultsUpdating {
     }
 }
 
+// MARK: - UISearchBarDelegate
+
 extension InvestimentsViewController: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         let board = UIStoryboard(name: "Suggestions", bundle: nil)
-        let controller = board.instantiateViewController(withIdentifier: String(describing: SuggestionsViewController.self))
-        navigationController?.pushViewController(controller, animated: true)
+        guard let controller = board.instantiateViewController(withIdentifier: String(describing: SuggestionsViewController.self)) as? SuggestionsViewController else {
+            return
+        }
+        suggestionsViewController = controller
+        controller.willMove(toParent: self)
+        addChild(controller)
+        
+        controller.view.alpha = 0
+        UIView.animate(withDuration: 0.3) {
+            self.view.addSubview(controller.view)
+            controller.view.alpha = 1
+        }
+        
+        controller.didMove(toParent: self)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        suggestionsViewController?.willMove(toParent: nil)
+        
+        UIView.animate(withDuration: 0.3) {
+            self.suggestionsViewController?.view.alpha = 0
+            self.suggestionsViewController?.view.removeFromSuperview()
+            self.suggestionsViewController?.removeFromParent()
+        }
     }
 }

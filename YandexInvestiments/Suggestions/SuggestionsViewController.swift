@@ -25,18 +25,6 @@ class SuggestionsViewController: UIViewController {
         searchedList.register(nib, forCellWithReuseIdentifier: SearchedDataSource.cellId)
         searchedList.dataSource = searchedDataSource
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 class PopularRequestsDataSource: NSObject, UICollectionViewDataSource {
@@ -73,6 +61,4 @@ class SearchedDataSource: NSObject, UICollectionViewDataSource {
         cell.setup(suggestionName: searchedList[indexPath.item])
         return cell
     }
-    
-    
 }

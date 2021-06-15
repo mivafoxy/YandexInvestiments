@@ -33,6 +33,11 @@
                 <constraint firstAttribute="bottom" secondItem="FiK-Kd-TwC" secondAttribute="bottom" constant="12" id="wx0-bQ-aet"/>
             </constraints>
             <size key="customSize" width="156" height="67"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <real key="value" value="20"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="suggestionName" destination="FiK-Kd-TwC" id="RJW-eu-JC7"/>
             </connections>

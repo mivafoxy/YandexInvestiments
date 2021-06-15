@@ -75,6 +75,11 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <real key="value" value="16"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="companyIcon" destination="tKT-PX-0Sn" id="Kxy-3u-rFW"/>
                 <outlet property="companyName" destination="j0o-iC-AfP" id="tUd-3e-NQS"/>
