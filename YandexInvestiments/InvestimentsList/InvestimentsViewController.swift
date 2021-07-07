@@ -45,7 +45,11 @@ class InvestimentsViewController: UIViewController {
         InvestimentModel("MA", "Matercard", "$3 204", "+$0.12 (1,15%)", true)
     ]
     
+    private var filteredTableViewStub: [InvestimentModel] = []
+    
     private let selector = ["Stocks", "Favorites"]
+    
+    private var isFiltering = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,20 +74,61 @@ class InvestimentsViewController: UIViewController {
         navigationItem.hidesSearchBarWhenScrolling = false
     }
 
+    private func addSuggestionController() {
+        let board = UIStoryboard(name: "Suggestions", bundle: nil)
+        let boardId = String(describing: SuggestionsViewController.self)
+        guard let controller = board.instantiateViewController(withIdentifier: boardId) as? SuggestionsViewController else {
+            return
+        }
+        suggestionsViewController = controller
+        controller.willMove(toParent: self)
+        addChild(controller)
+        
+        controller.view.alpha = 0
+        UIView.animate(withDuration: 0.3) {
+            self.view.addSubview(controller.view)
+            controller.view.alpha = 1
+        }
+        
+        controller.didMove(toParent: self)
+    }
+    
+    private func removeSuggestionController() {
+        UIView.animate(
+            withDuration: 0.3,
+            animations: {
+                self.suggestionsViewController?.view.alpha = 0
+            },
+            completion: { (isCompleted) in
+                if isCompleted {
+                    self.suggestionsViewController?.view.removeFromSuperview()
+                    self.suggestionsViewController?.removeFromParent()
+                    self.suggestionsViewController?.willMove(toParent: nil)
+                }
+            })
+    }
+    
 }
 
 // MARK: - UITableViewDataSource
 
 extension InvestimentsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        tableViewStub.count
+        if isFiltering {
+            return filteredTableViewStub.count
+        } else {
+            return tableViewStub.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: tableCellId, for: indexPath) as! InvestimentsTableCell
         
-        let stub = tableViewStub[indexPath.row]
-        cell.setup(model: stub)
+        if isFiltering {
+            cell.setup(model: filteredTableViewStub[indexPath.row])
+        } else {
+            cell.setup(model: tableViewStub[indexPath.row])
+        }
         
         if indexPath.row % 2 == 0 {
             cell.backgroundColor = .gray
@@ -131,10 +176,23 @@ extension InvestimentsViewController: UICollectionViewDataSource {
 
 extension InvestimentsViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        guard let text = searchController.searchBar.text else {
+        guard let text = searchController.searchBar.text, !text.isEmpty else {
+            filteredTableViewStub = []
+            stocksTableView.reloadData()
             return
         }
         print(text)
+        removeSuggestionController()
+        filteredTableViewStub = tableViewStub.filter {
+            $0.investimentName.lowercased().contains(text.lowercased())
+        }
+        
+        UIView.transition(
+            with: stocksTableView,
+            duration: 0.35,
+            options: .transitionCrossDissolve) {
+            self.stocksTableView.reloadData()
+        }
     }
 }
 
@@ -142,30 +200,19 @@ extension InvestimentsViewController: UISearchResultsUpdating {
 
 extension InvestimentsViewController: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        let board = UIStoryboard(name: "Suggestions", bundle: nil)
-        guard let controller = board.instantiateViewController(withIdentifier: String(describing: SuggestionsViewController.self)) as? SuggestionsViewController else {
-            return
-        }
-        suggestionsViewController = controller
-        controller.willMove(toParent: self)
-        addChild(controller)
-        
-        controller.view.alpha = 0
-        UIView.animate(withDuration: 0.3) {
-            self.view.addSubview(controller.view)
-            controller.view.alpha = 1
-        }
-        
-        controller.didMove(toParent: self)
+        addSuggestionController()
+        isFiltering = true
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        suggestionsViewController?.willMove(toParent: nil)
+        removeSuggestionController()
+        isFiltering = false
         
-        UIView.animate(withDuration: 0.3) {
-            self.suggestionsViewController?.view.alpha = 0
-            self.suggestionsViewController?.view.removeFromSuperview()
-            self.suggestionsViewController?.removeFromParent()
+        UIView.transition(
+            with: stocksTableView,
+            duration: 0.35,
+            options: .transitionCrossDissolve) {
+            self.stocksTableView.reloadData()
         }
     }
 }
