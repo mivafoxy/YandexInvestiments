@@ -12,7 +12,7 @@ struct InvestimentModel {
     let companyName: String
     let price: String
     let dynamic: String
-    let isFavourite: Bool
+    var isFavourite: Bool
     
     init(_ investimentName: String, _ companyName: String, _ price: String, _ dynamic: String, _ isFavourite: Bool) {
         self.investimentName = investimentName
@@ -46,10 +46,13 @@ class InvestimentsViewController: UIViewController {
     ]
     
     private var filteredTableViewStub: [InvestimentModel] = []
+    private var favoritingTableViewStub: [InvestimentModel] = []
     
     private let selector = ["Stocks", "Favorites"]
     
     private var isFiltering = false
+    private var filteringText = ""
+    private var isFavoriting = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +62,7 @@ class InvestimentsViewController: UIViewController {
         stocksTableView.register(UINib(nibName: String(describing: tableCellId), bundle: nil), forCellReuseIdentifier: tableCellId)
         
         selectorCollectionView.dataSource = self
+        selectorCollectionView.delegate = self
         selectorCollectionView.register(UINib(nibName: selectorCellId, bundle: nil), forCellWithReuseIdentifier: selectorCellId)
         
         initSearchController()
@@ -108,6 +112,30 @@ class InvestimentsViewController: UIViewController {
             })
     }
     
+    private func reloadTableView() {
+        UIView.transition(
+            with: stocksTableView,
+            duration: 0.35,
+            options: .transitionCrossDissolve) {
+            self.stocksTableView.reloadData()
+        }
+    }
+    
+    private func filterTable(with investimentName: String) {
+        filteringText = investimentName
+        
+        if isFiltering {
+            filteredTableViewStub = tableViewStub.filter {
+                $0.investimentName.lowercased().contains(filteringText.lowercased())
+            }
+        }
+        
+        if isFavoriting {
+            filteredTableViewStub = filteredTableViewStub.filter {
+                $0.isFavourite
+            }
+        }
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -116,6 +144,8 @@ extension InvestimentsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isFiltering {
             return filteredTableViewStub.count
+        } else if isFavoriting {
+            return favoritingTableViewStub.count
         } else {
             return tableViewStub.count
         }
@@ -126,6 +156,8 @@ extension InvestimentsViewController: UITableViewDataSource {
         
         if isFiltering {
             cell.setup(model: filteredTableViewStub[indexPath.row])
+        } else if isFavoriting {
+            cell.setup(model: favoritingTableViewStub[indexPath.row])
         } else {
             cell.setup(model: tableViewStub[indexPath.row])
         }
@@ -168,7 +200,46 @@ extension InvestimentsViewController: UICollectionViewDataSource {
         
         cell.setup(sectionName: selector[indexPath.item])
         
+        if selector[indexPath.item] == selector[selector.startIndex] {
+            cell.makeSelected()
+        } else {
+            cell.makeUnselected()
+        }
+        
         return cell
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+
+extension InvestimentsViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? InvestimentCollectionCell else {
+            return
+        }
+        
+        cell.makeSelected()
+        
+        collectionView.visibleCells.forEach { visibleCell in
+            guard let visibleCell = visibleCell as? InvestimentCollectionCell else {
+                return
+            }
+            visibleCell.makeUnselected()
+        }
+        
+        isFavoriting = cell.sectionName.text == selector.last
+        
+        if isFavoriting {
+            favoritingTableViewStub = tableViewStub.filter {
+                $0.isFavourite
+            }
+        }
+        
+        if isFiltering {
+            filterTable(with: filteringText)
+        }
+        
+        reloadTableView()
     }
 }
 
@@ -178,21 +249,14 @@ extension InvestimentsViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text, !text.isEmpty else {
             filteredTableViewStub = []
-            stocksTableView.reloadData()
+            reloadTableView()
             return
         }
         print(text)
         removeSuggestionController()
-        filteredTableViewStub = tableViewStub.filter {
-            $0.investimentName.lowercased().contains(text.lowercased())
-        }
         
-        UIView.transition(
-            with: stocksTableView,
-            duration: 0.35,
-            options: .transitionCrossDissolve) {
-            self.stocksTableView.reloadData()
-        }
+        filterTable(with: text)
+        reloadTableView()
     }
 }
 
@@ -208,11 +272,6 @@ extension InvestimentsViewController: UISearchBarDelegate {
         removeSuggestionController()
         isFiltering = false
         
-        UIView.transition(
-            with: stocksTableView,
-            duration: 0.35,
-            options: .transitionCrossDissolve) {
-            self.stocksTableView.reloadData()
-        }
+        reloadTableView()
     }
 }

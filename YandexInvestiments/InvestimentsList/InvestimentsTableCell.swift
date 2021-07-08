@@ -19,7 +19,7 @@ class InvestimentsTableCell: UITableViewCell {
     public var model: InvestimentModel?
     
     public func setup(model: InvestimentModel) {
-        
+        self.selectionStyle = .none
         self.model = model
         
         companyIcon.backgroundColor = .red
