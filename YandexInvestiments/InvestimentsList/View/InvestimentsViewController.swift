@@ -7,20 +7,8 @@
 
 import UIKit
 
-struct InvestimentModel {
-    let investimentName: String
-    let companyName: String
-    let price: String
-    let dynamic: String
-    var isFavourite: Bool
-    
-    init(_ investimentName: String, _ companyName: String, _ price: String, _ dynamic: String, _ isFavourite: Bool) {
-        self.investimentName = investimentName
-        self.companyName = companyName
-        self.price = price
-        self.dynamic = dynamic
-        self.isFavourite = isFavourite
-    }
+protocol InvestimentsView {
+    func showStocks(models: [InvestimentModel])
 }
 
 class InvestimentsViewController: UIViewController {
@@ -34,16 +22,7 @@ class InvestimentsViewController: UIViewController {
     // TODO: - make delegate for this.
     private var suggestionsViewController: SuggestionsViewController?
     
-    private let tableViewStub = [
-        InvestimentModel("YNDX","Yandex,LLC","4 764,6 ₽","+55 ₽ (1,15%)", false),
-        InvestimentModel("AAPL", "Apple INC.", "$131.93", "+$0.12 (1,15%)", true),
-        InvestimentModel("GOOGL", "Alphabet Class A", "$1 825", "+$0.12 (1,15%)", false),
-        InvestimentModel("AMZN", "Amazon.com", "$3 204", "-$0.12 (1,15%)", false),
-        InvestimentModel("BAC", "Bank of America Corp", "$3 204", "+$0.12 (1,15%)", false),
-        InvestimentModel("MSFT", "Microsoft Corporation", "$3 204", "+$0.12 (1,15%)", true),
-        InvestimentModel("TSLA", "Tesla Motors", "$3 204", "+$0.12 (1,15%)", true),
-        InvestimentModel("MA", "Matercard", "$3 204", "+$0.12 (1,15%)", true)
-    ]
+    private var tableViewStub: [InvestimentModel] = []
     
     private var filteredTableViewStub: [InvestimentModel] = []
     private var favoritingTableViewStub: [InvestimentModel] = []
@@ -53,6 +32,9 @@ class InvestimentsViewController: UIViewController {
     private var isFiltering = false
     private var filteringText = ""
     private var isFavoriting = false
+    
+    private var presenter: InvestimentsListPresenterInput? = InvestimentsListPresenter()
+    private var interactor: InvestimentsListInteractorInput? = InvestimentsListInteractor()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,6 +48,11 @@ class InvestimentsViewController: UIViewController {
         selectorCollectionView.register(UINib(nibName: selectorCellId, bundle: nil), forCellWithReuseIdentifier: selectorCellId)
         
         initSearchController()
+        
+        interactor?.loadInvestimentsCollections()
+        interactor?.presenter = presenter
+        presenter?.interactor = interactor
+        presenter?.view = self
     }
 
     private func initSearchController() {
@@ -125,16 +112,26 @@ class InvestimentsViewController: UIViewController {
         filteringText = investimentName
         
         if isFiltering {
-            filteredTableViewStub = tableViewStub.filter {
-                $0.investimentName.lowercased().contains(filteringText.lowercased())
+            filteredTableViewStub = tableViewStub.filter { element in
+                guard let elementName = element.symbol else { return false }
+                return elementName.lowercased().contains(filteringText.lowercased())
             }
         }
         
         if isFavoriting {
             filteredTableViewStub = filteredTableViewStub.filter {
-                $0.isFavourite
+                $0.isFavourite!
             }
         }
+    }
+}
+
+// MARK: - InvestimentsView
+
+extension InvestimentsViewController: InvestimentsView {
+    func showStocks(models: [InvestimentModel]) {
+        tableViewStub = models
+        reloadTableView()
     }
 }
 
@@ -231,7 +228,7 @@ extension InvestimentsViewController: UICollectionViewDelegate {
         
         if isFavoriting {
             favoritingTableViewStub = tableViewStub.filter {
-                $0.isFavourite
+                $0.isFavourite!
             }
         }
         

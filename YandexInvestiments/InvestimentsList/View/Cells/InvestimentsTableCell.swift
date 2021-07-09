@@ -25,7 +25,7 @@ class InvestimentsTableCell: UITableViewCell {
         companyIcon.backgroundColor = .red
         companyIcon.tintColor = .red
         
-        self.investimentName.text = model.investimentName
+        self.investimentName.text = model.symbol
         self.investimentName.sizeToFit()
         
         self.companyName.text = model.companyName
@@ -34,10 +34,16 @@ class InvestimentsTableCell: UITableViewCell {
         favouriteIcon.backgroundColor = .blue
         favouriteIcon.tintColor = .blue
         
-        self.price.text = model.price
+        self.price.text = model.regularPrice
         self.price.sizeToFit()
         
         self.difference.text = model.dynamic
         self.difference.sizeToFit()
+        
+        if model.isGrowing {
+            self.difference.textColor = .green
+        } else {
+            self.difference.textColor = .red
+        }
     }
 }

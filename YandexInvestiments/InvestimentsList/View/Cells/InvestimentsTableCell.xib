@@ -42,15 +42,18 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j0o-iC-AfP">
-                        <rect key="frame" x="72" y="38" width="31" height="16"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j0o-iC-AfP">
+                        <rect key="frame" x="72" y="38" width="112" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="112" id="STT-Fl-Ar0"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oe0-1q-92f">
-                        <rect key="frame" x="302" y="35" width="31" height="15"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <rect key="frame" x="300" y="35" width="33" height="15"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -88,7 +91,7 @@
                 <outlet property="investimentName" destination="pDb-TM-PxH" id="2dc-UF-Pc7"/>
                 <outlet property="price" destination="b2O-oF-dKS" id="rpV-34-vrf"/>
             </connections>
-            <point key="canvasLocation" x="150" y="136.60714285714286"/>
+            <point key="canvasLocation" x="148.55072463768118" y="136.60714285714286"/>
         </tableViewCell>
     </objects>
 </document>
