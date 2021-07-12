@@ -8,13 +8,16 @@
 import Foundation
 
 protocol InvestimentsListInteractorInput {
-    var presenter: InvestimentsListPresenterInput? { get set }
     func loadInvestimentsCollections()
 }
 
 class InvestimentsListInteractor: InvestimentsListInteractorInput {
-    var presenter: InvestimentsListPresenterInput?
+    private weak var presenter: InvestimentsListPresenterInput!
     private var investimentsList = [InvestimentModel]()
+    
+    public init(presenter: InvestimentsListPresenterInput) {
+        self.presenter = presenter
+    }
     
     public func loadInvestimentsCollections() {
         let dispatchGroup = DispatchGroup()
@@ -69,7 +72,7 @@ class InvestimentsListInteractor: InvestimentsListInteractorInput {
         
         dispatchGroup.notify(queue: queue) {
             DispatchQueue.main.async {
-                self.presenter?.showStocks(tickers: self.investimentsList)
+                self.presenter.showStocks(tickers: self.investimentsList)
             }
         }
     }

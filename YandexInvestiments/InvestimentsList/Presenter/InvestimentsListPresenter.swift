@@ -7,17 +7,30 @@
 
 import Foundation
 
-protocol InvestimentsListPresenterInput {
-    var view: InvestimentsView? { get set }
-    var interactor: InvestimentsListInteractorInput? { get set }
+protocol InvestimentsListPresenterInput: class {
+    func configureView()
     func showStocks(tickers: [InvestimentModel])
+    func tickerClicked(model: InvestimentModel)
 }
 
 class InvestimentsListPresenter: InvestimentsListPresenterInput {
+    private weak var view: InvestimentsView!
     var interactor: InvestimentsListInteractorInput?
-    var view: InvestimentsView?
+    var router: InvestimentsListRouterProtocol?
+    
+    public init(view: InvestimentsView) {
+        self.view = view
+    }
+    
+    func configureView() {
+        interactor?.loadInvestimentsCollections()
+    }
     
     func showStocks(tickers: [InvestimentModel]) {
-        view?.showStocks(models: tickers)
+        view.showStocks(models: tickers)
+    }
+    
+    func tickerClicked(model: InvestimentModel) {
+        router?.showInvestimentCard(with: model)
     }
 }

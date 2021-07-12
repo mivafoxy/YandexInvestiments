@@ -7,7 +7,8 @@
 
 import UIKit
 
-protocol InvestimentsView {
+protocol InvestimentsView: class {
+    var presenter: InvestimentsListPresenterInput? { get set }
     func showStocks(models: [InvestimentModel])
 }
 
@@ -33,8 +34,8 @@ class InvestimentsViewController: UIViewController {
     private var filteringText = ""
     private var isFavoriting = false
     
-    private var presenter: InvestimentsListPresenterInput? = InvestimentsListPresenter()
-    private var interactor: InvestimentsListInteractorInput? = InvestimentsListInteractor()
+    var presenter: InvestimentsListPresenterInput?
+    private var configurator: InvestimentsListConfiguratorProtocol = InvestimentsListConfigurator()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,10 +50,8 @@ class InvestimentsViewController: UIViewController {
         
         initSearchController()
         
-        interactor?.loadInvestimentsCollections()
-        interactor?.presenter = presenter
-        presenter?.interactor = interactor
-        presenter?.view = self
+        configurator.configure(with: self)
+        presenter?.configureView()
     }
 
     private func initSearchController() {
@@ -173,13 +172,16 @@ extension InvestimentsViewController: UITableViewDataSource {
 
 extension InvestimentsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let _ = tableView.cellForRow(at: indexPath) as? InvestimentsTableCell else {
+        guard
+            let cell = tableView.cellForRow(at: indexPath) as? InvestimentsTableCell,
+            let model = cell.model
+            else
+        {
             return
         }
         
-        let module = UIStoryboard(name: "Card", bundle: nil)
-        let cardController = module.instantiateViewController(withIdentifier: String(describing: CardViewController.self))
-        navigationController?.pushViewController(cardController, animated: true)
+        
+        presenter?.tickerClicked(model: model)
     }
 }
 

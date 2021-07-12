@@ -12,6 +12,8 @@
 		ED2AE31626973D40004E266B /* TrendingElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2AE31526973D40004E266B /* TrendingElement.swift */; };
 		ED2AE31A26973E61004E266B /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2AE31926973E61004E266B /* Quote.swift */; };
 		ED2AE31D2697538C004E266B /* InvestimentsListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2AE31C2697538C004E266B /* InvestimentsListPresenter.swift */; };
+		ED8124D9269C90990075BC35 /* InvestimentsListConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8124D8269C90990075BC35 /* InvestimentsListConfigurator.swift */; };
+		ED8124DF269CA18F0075BC35 /* InvestimentsListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8124DE269CA18F0075BC35 /* InvestimentsListRouter.swift */; };
 		ED9AE14E269755CE00745E4A /* InvestimentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9AE14D269755CE00745E4A /* InvestimentModel.swift */; };
 		EDA04D5F266FCBBE0065576A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA04D5E266FCBBE0065576A /* AppDelegate.swift */; };
 		EDA04D61266FCBBE0065576A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA04D60266FCBBE0065576A /* SceneDelegate.swift */; };
@@ -40,6 +42,8 @@
 		ED2AE31526973D40004E266B /* TrendingElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingElement.swift; sourceTree = "<group>"; };
 		ED2AE31926973E61004E266B /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
 		ED2AE31C2697538C004E266B /* InvestimentsListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestimentsListPresenter.swift; sourceTree = "<group>"; };
+		ED8124D8269C90990075BC35 /* InvestimentsListConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestimentsListConfigurator.swift; sourceTree = "<group>"; };
+		ED8124DE269CA18F0075BC35 /* InvestimentsListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestimentsListRouter.swift; sourceTree = "<group>"; };
 		ED9AE14D269755CE00745E4A /* InvestimentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestimentModel.swift; sourceTree = "<group>"; };
 		EDA04D5B266FCBBE0065576A /* YandexInvestiments.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YandexInvestiments.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDA04D5E266FCBBE0065576A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -130,6 +134,22 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		ED8124D7269C90420075BC35 /* Configurator */ = {
+			isa = PBXGroup;
+			children = (
+				ED8124D8269C90990075BC35 /* InvestimentsListConfigurator.swift */,
+			);
+			path = Configurator;
+			sourceTree = "<group>";
+		};
+		ED8124DD269CA17D0075BC35 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				ED8124DE269CA18F0075BC35 /* InvestimentsListRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		ED9AE14C269755B800745E4A /* Entity */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +194,8 @@
 		EDA04D732670DFE90065576A /* InvestimentsList */ = {
 			isa = PBXGroup;
 			children = (
+				ED8124DD269CA17D0075BC35 /* Router */,
+				ED8124D7269C90420075BC35 /* Configurator */,
 				ED9AE14C269755B800745E4A /* Entity */,
 				ED2AE32226975448004E266B /* Presenter */,
 				ED2AE3212697543E004E266B /* Interactor */,
@@ -301,6 +323,7 @@
 				ED2AE312269732AA004E266B /* InvestimentsListInteractor.swift in Sources */,
 				EDA04D8E26724BE50065576A /* CardViewController.swift in Sources */,
 				ED9AE14E269755CE00745E4A /* InvestimentModel.swift in Sources */,
+				ED8124D9269C90990075BC35 /* InvestimentsListConfigurator.swift in Sources */,
 				EDAC314B26739474009DA903 /* CardViewCell.swift in Sources */,
 				EDA04D61266FCBBE0065576A /* SceneDelegate.swift in Sources */,
 				EDA04D802670F50C0065576A /* InvestimentCollectionCell.swift in Sources */,
@@ -308,6 +331,7 @@
 				EDA04D7B2670E6EA0065576A /* InvestimentsTableCell.swift in Sources */,
 				ED2AE30F26972EF1004E266B /* QueryService.swift in Sources */,
 				EDE0F30E2678E79E0088AA67 /* UIView+Extension.swift in Sources */,
+				ED8124DF269CA18F0075BC35 /* InvestimentsListRouter.swift in Sources */,
 				EDAC313F2673840D009DA903 /* SuggestionsViewController.swift in Sources */,
 				ED2AE31D2697538C004E266B /* InvestimentsListPresenter.swift in Sources */,
 				ED2AE31A26973E61004E266B /* Quote.swift in Sources */,
