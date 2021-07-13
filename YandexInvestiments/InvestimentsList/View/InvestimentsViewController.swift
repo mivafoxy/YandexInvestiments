@@ -34,8 +34,9 @@ class InvestimentsViewController: UIViewController {
     private var filteringText = ""
     private var isFavoriting = false
     
-    var presenter: InvestimentsListPresenterInput?
     private var configurator: InvestimentsListConfiguratorProtocol = InvestimentsListConfigurator()
+    
+    public var presenter: InvestimentsListPresenterInput?
     
     override func viewDidLoad() {
         super.viewDidLoad()

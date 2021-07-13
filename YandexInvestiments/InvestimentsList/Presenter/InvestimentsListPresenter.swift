@@ -9,12 +9,14 @@ import Foundation
 
 protocol InvestimentsListPresenterInput: class {
     func configureView()
-    func showStocks(tickers: [InvestimentModel])
+    func stocksLoaded(tickers: [InvestimentModel])
     func tickerClicked(model: InvestimentModel)
 }
 
 class InvestimentsListPresenter: InvestimentsListPresenterInput {
     private weak var view: InvestimentsView!
+    
+    
     var interactor: InvestimentsListInteractorInput?
     var router: InvestimentsListRouterProtocol?
     
@@ -26,7 +28,7 @@ class InvestimentsListPresenter: InvestimentsListPresenterInput {
         interactor?.loadInvestimentsCollections()
     }
     
-    func showStocks(tickers: [InvestimentModel]) {
+    func stocksLoaded(tickers: [InvestimentModel]) {
         view.showStocks(models: tickers)
     }
     

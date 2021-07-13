@@ -20,8 +20,14 @@ class InvestimentsListRouter: InvestimentsListRouterProtocol {
     }
     
     func showInvestimentCard(with model: InvestimentModel) {
-        let module = UIStoryboard(name: "Card", bundle: nil)
-        let cardController = module.instantiateViewController(withIdentifier: String(describing: CardViewController.self))
+        
+        let module = UIStoryboard(name: "Investiment", bundle: nil)
+        let id = String(describing: InvestimentViewController.self)
+        guard let cardController = module.instantiateViewController(withIdentifier: id) as? InvestimentViewController else {
+            return
+        }
+
+        cardController.configurator?.configure(with: model, and: cardController)
         viewController?.navigationController?.pushViewController(cardController, animated: true)
     }
 }

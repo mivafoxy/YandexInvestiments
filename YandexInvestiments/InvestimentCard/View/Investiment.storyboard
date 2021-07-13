@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Card View Controller-->
+        <!--Investiment View Controller-->
         <scene sceneID="VzP-l9-m0Z">
             <objects>
-                <viewController storyboardIdentifier="CardViewController" id="RFB-jf-riJ" customClass="CardViewController" customModule="YandexInvestiments" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InvestimentViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RFB-jf-riJ" customClass="InvestimentViewController" customModule="YandexInvestiments" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TUY-rt-lVp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -164,7 +164,16 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="allButton" destination="hE1-UK-xKf" id="pZ2-QB-pKG"/>
+                        <outlet property="buyButton" destination="1zP-ru-QD1" id="VGi-Rx-fsH"/>
+                        <outlet property="dayButton" destination="3eS-Et-fuL" id="12U-Nh-Uof"/>
+                        <outlet property="dynamicLabel" destination="AOV-ru-Go4" id="6hO-i6-2Vb"/>
+                        <outlet property="halfYearButton" destination="7aQ-Ri-063" id="0QZ-M0-sfi"/>
+                        <outlet property="monthButton" destination="buI-i7-ELG" id="q0v-Id-xbK"/>
+                        <outlet property="priceLabel" destination="aSG-tL-mS2" id="aEc-JX-aij"/>
                         <outlet property="sectionsCollection" destination="F4S-QD-pvb" id="Td7-jr-j6p"/>
+                        <outlet property="weekButton" destination="Qnn-3q-giK" id="xto-m3-UYU"/>
+                        <outlet property="yearButton" destination="gfQ-rJ-Txu" id="FXQ-Oc-ZHq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xhy-Q4-hbl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

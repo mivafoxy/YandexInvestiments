@@ -12,6 +12,8 @@
 		ED2AE31626973D40004E266B /* TrendingElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2AE31526973D40004E266B /* TrendingElement.swift */; };
 		ED2AE31A26973E61004E266B /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2AE31926973E61004E266B /* Quote.swift */; };
 		ED2AE31D2697538C004E266B /* InvestimentsListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2AE31C2697538C004E266B /* InvestimentsListPresenter.swift */; };
+		ED5A1BB9269DCB35007A3C76 /* InvestimentPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5A1BB8269DCB35007A3C76 /* InvestimentPresenter.swift */; };
+		ED5A1BBE269DEDA1007A3C76 /* InvestimentConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5A1BBD269DEDA1007A3C76 /* InvestimentConfigurator.swift */; };
 		ED8124D9269C90990075BC35 /* InvestimentsListConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8124D8269C90990075BC35 /* InvestimentsListConfigurator.swift */; };
 		ED8124DF269CA18F0075BC35 /* InvestimentsListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8124DE269CA18F0075BC35 /* InvestimentsListRouter.swift */; };
 		ED9AE14E269755CE00745E4A /* InvestimentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9AE14D269755CE00745E4A /* InvestimentModel.swift */; };
@@ -25,8 +27,8 @@
 		EDA04D7C2670E6EA0065576A /* InvestimentsTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDA04D7A2670E6EA0065576A /* InvestimentsTableCell.xib */; };
 		EDA04D802670F50C0065576A /* InvestimentCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA04D7E2670F50C0065576A /* InvestimentCollectionCell.swift */; };
 		EDA04D812670F50C0065576A /* InvestimentCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDA04D7F2670F50C0065576A /* InvestimentCollectionCell.xib */; };
-		EDA04D8E26724BE50065576A /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA04D8C26724BE50065576A /* CardViewController.swift */; };
-		EDA04D9326724CD10065576A /* Card.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDA04D9226724CD10065576A /* Card.storyboard */; };
+		EDA04D8E26724BE50065576A /* InvestimentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA04D8C26724BE50065576A /* InvestimentViewController.swift */; };
+		EDA04D9326724CD10065576A /* Investiment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDA04D9226724CD10065576A /* Investiment.storyboard */; };
 		EDAC313F2673840D009DA903 /* SuggestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDAC313E2673840D009DA903 /* SuggestionsViewController.swift */; };
 		EDAC314226738492009DA903 /* Suggestions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDAC314126738492009DA903 /* Suggestions.storyboard */; };
 		EDAC3146267388B3009DA903 /* SuggestionCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDAC3144267388B3009DA903 /* SuggestionCollectionCell.swift */; };
@@ -42,6 +44,8 @@
 		ED2AE31526973D40004E266B /* TrendingElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingElement.swift; sourceTree = "<group>"; };
 		ED2AE31926973E61004E266B /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
 		ED2AE31C2697538C004E266B /* InvestimentsListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestimentsListPresenter.swift; sourceTree = "<group>"; };
+		ED5A1BB8269DCB35007A3C76 /* InvestimentPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestimentPresenter.swift; sourceTree = "<group>"; };
+		ED5A1BBD269DEDA1007A3C76 /* InvestimentConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestimentConfigurator.swift; sourceTree = "<group>"; };
 		ED8124D8269C90990075BC35 /* InvestimentsListConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestimentsListConfigurator.swift; sourceTree = "<group>"; };
 		ED8124DE269CA18F0075BC35 /* InvestimentsListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestimentsListRouter.swift; sourceTree = "<group>"; };
 		ED9AE14D269755CE00745E4A /* InvestimentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestimentModel.swift; sourceTree = "<group>"; };
@@ -57,8 +61,8 @@
 		EDA04D7A2670E6EA0065576A /* InvestimentsTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvestimentsTableCell.xib; sourceTree = "<group>"; };
 		EDA04D7E2670F50C0065576A /* InvestimentCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestimentCollectionCell.swift; sourceTree = "<group>"; };
 		EDA04D7F2670F50C0065576A /* InvestimentCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvestimentCollectionCell.xib; sourceTree = "<group>"; };
-		EDA04D8C26724BE50065576A /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
-		EDA04D9226724CD10065576A /* Card.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Card.storyboard; sourceTree = "<group>"; };
+		EDA04D8C26724BE50065576A /* InvestimentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestimentViewController.swift; sourceTree = "<group>"; };
+		EDA04D9226724CD10065576A /* Investiment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Investiment.storyboard; sourceTree = "<group>"; };
 		EDAC313E2673840D009DA903 /* SuggestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsViewController.swift; sourceTree = "<group>"; };
 		EDAC314126738492009DA903 /* Suggestions.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Suggestions.storyboard; sourceTree = "<group>"; };
 		EDAC3144267388B3009DA903 /* SuggestionCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionCollectionCell.swift; sourceTree = "<group>"; };
@@ -121,6 +125,33 @@
 				ED2AE31C2697538C004E266B /* InvestimentsListPresenter.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		ED5A1BB6269DCB18007A3C76 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EDA04D8C26724BE50065576A /* InvestimentViewController.swift */,
+				EDA04D9226724CD10065576A /* Investiment.storyboard */,
+				EDAC314926739474009DA903 /* CardViewCell.swift */,
+				EDAC314A26739474009DA903 /* CardViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ED5A1BB7269DCB24007A3C76 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				ED5A1BB8269DCB35007A3C76 /* InvestimentPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		ED5A1BBC269DED84007A3C76 /* Configurator */ = {
+			isa = PBXGroup;
+			children = (
+				ED5A1BBD269DEDA1007A3C76 /* InvestimentConfigurator.swift */,
+			);
+			path = Configurator;
 			sourceTree = "<group>";
 		};
 		ED5D6BA726985753000BED46 /* Cells */ = {
@@ -207,10 +238,9 @@
 		EDA04D8326724AD30065576A /* InvestimentCard */ = {
 			isa = PBXGroup;
 			children = (
-				EDA04D8C26724BE50065576A /* CardViewController.swift */,
-				EDA04D9226724CD10065576A /* Card.storyboard */,
-				EDAC314926739474009DA903 /* CardViewCell.swift */,
-				EDAC314A26739474009DA903 /* CardViewCell.xib */,
+				ED5A1BBC269DED84007A3C76 /* Configurator */,
+				ED5A1BB7269DCB24007A3C76 /* Presenter */,
+				ED5A1BB6269DCB18007A3C76 /* View */,
 			);
 			path = InvestimentCard;
 			sourceTree = "<group>";
@@ -303,7 +333,7 @@
 				EDAC3147267388B3009DA903 /* SuggestionCollectionCell.xib in Resources */,
 				EDA04D812670F50C0065576A /* InvestimentCollectionCell.xib in Resources */,
 				EDAC314C26739474009DA903 /* CardViewCell.xib in Resources */,
-				EDA04D9326724CD10065576A /* Card.storyboard in Resources */,
+				EDA04D9326724CD10065576A /* Investiment.storyboard in Resources */,
 				EDA04D68266FCBBF0065576A /* Assets.xcassets in Resources */,
 				EDAC314226738492009DA903 /* Suggestions.storyboard in Resources */,
 				EDA04D66266FCBBE0065576A /* Main.storyboard in Resources */,
@@ -321,7 +351,8 @@
 				EDA04D63266FCBBE0065576A /* InvestimentsViewController.swift in Sources */,
 				EDA04D5F266FCBBE0065576A /* AppDelegate.swift in Sources */,
 				ED2AE312269732AA004E266B /* InvestimentsListInteractor.swift in Sources */,
-				EDA04D8E26724BE50065576A /* CardViewController.swift in Sources */,
+				EDA04D8E26724BE50065576A /* InvestimentViewController.swift in Sources */,
+				ED5A1BB9269DCB35007A3C76 /* InvestimentPresenter.swift in Sources */,
 				ED9AE14E269755CE00745E4A /* InvestimentModel.swift in Sources */,
 				ED8124D9269C90990075BC35 /* InvestimentsListConfigurator.swift in Sources */,
 				EDAC314B26739474009DA903 /* CardViewCell.swift in Sources */,
@@ -334,6 +365,7 @@
 				ED8124DF269CA18F0075BC35 /* InvestimentsListRouter.swift in Sources */,
 				EDAC313F2673840D009DA903 /* SuggestionsViewController.swift in Sources */,
 				ED2AE31D2697538C004E266B /* InvestimentsListPresenter.swift in Sources */,
+				ED5A1BBE269DEDA1007A3C76 /* InvestimentConfigurator.swift in Sources */,
 				ED2AE31A26973E61004E266B /* Quote.swift in Sources */,
 				ED2AE31626973D40004E266B /* TrendingElement.swift in Sources */,
 			);

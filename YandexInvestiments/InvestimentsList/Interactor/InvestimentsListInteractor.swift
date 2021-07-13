@@ -72,7 +72,7 @@ class InvestimentsListInteractor: InvestimentsListInteractorInput {
         
         dispatchGroup.notify(queue: queue) {
             DispatchQueue.main.async {
-                self.presenter.showStocks(tickers: self.investimentsList)
+                self.presenter.stocksLoaded(tickers: self.investimentsList)
             }
         }
     }
