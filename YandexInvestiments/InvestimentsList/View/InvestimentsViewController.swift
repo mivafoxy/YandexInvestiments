@@ -9,7 +9,7 @@ import UIKit
 
 protocol InvestimentsView: class {
     var presenter: InvestimentsListPresenterInput? { get set }
-    func showStocks(models: [InvestimentModel])
+    func showStocks()
 }
 
 class InvestimentsViewController: UIViewController {
@@ -23,19 +23,9 @@ class InvestimentsViewController: UIViewController {
     // TODO: - make delegate for this.
     private var suggestionsViewController: SuggestionsViewController?
     
-    private var tableViewStub: [InvestimentModel] = []
-    
-    private var filteredTableViewStub: [InvestimentModel] = []
-    private var favoritingTableViewStub: [InvestimentModel] = []
-    
     private let selector = ["Stocks", "Favorites"]
-    
-    private var isFiltering = false
-    private var filteringText = ""
-    private var isFavoriting = false
-    
+
     private var configurator: InvestimentsListConfiguratorProtocol = InvestimentsListConfigurator()
-    
     public var presenter: InvestimentsListPresenterInput?
     
     override func viewDidLoad() {
@@ -109,28 +99,14 @@ class InvestimentsViewController: UIViewController {
     }
     
     private func filterTable(with investimentName: String) {
-        filteringText = investimentName
-        
-        if isFiltering {
-            filteredTableViewStub = tableViewStub.filter { element in
-                guard let elementName = element.symbol else { return false }
-                return elementName.lowercased().contains(filteringText.lowercased())
-            }
-        }
-        
-        if isFavoriting {
-            filteredTableViewStub = filteredTableViewStub.filter {
-                $0.isFavourite!
-            }
-        }
+        presenter?.stocksFiltered(with: investimentName)
     }
 }
 
 // MARK: - InvestimentsView
 
 extension InvestimentsViewController: InvestimentsView {
-    func showStocks(models: [InvestimentModel]) {
-        tableViewStub = models
+    func showStocks() {
         reloadTableView()
     }
 }
@@ -139,25 +115,25 @@ extension InvestimentsViewController: InvestimentsView {
 
 extension InvestimentsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isFiltering {
-            return filteredTableViewStub.count
-        } else if isFavoriting {
-            return favoritingTableViewStub.count
-        } else {
-            return tableViewStub.count
+        guard let count = presenter?.getStocksCount() else {
+            return 0
         }
+        
+        return count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: tableCellId, for: indexPath) as! InvestimentsTableCell
-        
-        if isFiltering {
-            cell.setup(model: filteredTableViewStub[indexPath.row])
-        } else if isFavoriting {
-            cell.setup(model: favoritingTableViewStub[indexPath.row])
-        } else {
-            cell.setup(model: tableViewStub[indexPath.row])
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: tableCellId, for: indexPath) as? InvestimentsTableCell else {
+            return UITableViewCell()
         }
+        
+        guard let presenter = presenter else {
+            return UITableViewCell()
+        }
+        
+        let models = presenter.getStocks()
+        
+        cell.setup(model: models[indexPath.item])
         
         if indexPath.row % 2 == 0 {
             cell.backgroundColor = .gray
@@ -180,7 +156,6 @@ extension InvestimentsViewController: UITableViewDelegate {
         {
             return
         }
-        
         
         presenter?.tickerClicked(model: model)
     }
@@ -218,8 +193,6 @@ extension InvestimentsViewController: UICollectionViewDelegate {
             return
         }
         
-        cell.makeSelected()
-        
         collectionView.visibleCells.forEach { visibleCell in
             guard let visibleCell = visibleCell as? InvestimentCollectionCell else {
                 return
@@ -227,19 +200,10 @@ extension InvestimentsViewController: UICollectionViewDelegate {
             visibleCell.makeUnselected()
         }
         
-        isFavoriting = cell.sectionName.text == selector.last
+        cell.makeSelected()
         
-        if isFavoriting {
-            favoritingTableViewStub = tableViewStub.filter {
-                $0.isFavourite!
-            }
-        }
-        
-        if isFiltering {
-            filterTable(with: filteringText)
-        }
-        
-        reloadTableView()
+        let isFavoriting = cell.sectionName.text == selector.last
+        presenter?.selectorClicked(with: isFavoriting)
     }
 }
 
@@ -248,15 +212,13 @@ extension InvestimentsViewController: UICollectionViewDelegate {
 extension InvestimentsViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text, !text.isEmpty else {
-            filteredTableViewStub = []
-            reloadTableView()
             return
         }
-        print(text)
-        removeSuggestionController()
         
+        print(text)
+        
+        removeSuggestionController()
         filterTable(with: text)
-        reloadTableView()
     }
 }
 
@@ -265,13 +227,10 @@ extension InvestimentsViewController: UISearchResultsUpdating {
 extension InvestimentsViewController: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         addSuggestionController()
-        isFiltering = true
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         removeSuggestionController()
-        isFiltering = false
-        
-        reloadTableView()
+        presenter?.searchCancelled()
     }
 }
