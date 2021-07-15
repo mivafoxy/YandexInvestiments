@@ -13,10 +13,11 @@ protocol InvestimentConfiguratorProtocol {
 
 class InvestimentConfigurator: InvestimentConfiguratorProtocol {
     func configure(with model: InvestimentModel, and view: InvestimentView) {
-        
         let presenter = InvestimentPresenter(with: view)
+        let interactor = InvestimentCardInteractor(presenter: presenter)
         
         view.presenter = presenter
         presenter.model = model
+        presenter.interactor = interactor
     }
 }

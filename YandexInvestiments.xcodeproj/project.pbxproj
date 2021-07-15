@@ -3,10 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED1C37F1269F1CCB00B4D9FF /* MobileAnalyticsChartSwift in Frameworks */ = {isa = PBXBuildFile; productRef = ED1C37F0269F1CCB00B4D9FF /* MobileAnalyticsChartSwift */; };
+		ED1C37F5269F2A9C00B4D9FF /* InvestimentCardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1C37F4269F2A9C00B4D9FF /* InvestimentCardInteractor.swift */; };
+		ED1C37F8269F335D00B4D9FF /* HistoricalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1C37F7269F335D00B4D9FF /* HistoricalData.swift */; };
+		ED1C37FC269F3A3F00B4D9FF /* InvestimentCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1C37FB269F3A3F00B4D9FF /* InvestimentCardModel.swift */; };
 		ED2AE30F26972EF1004E266B /* QueryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2AE30E26972EF1004E266B /* QueryService.swift */; };
 		ED2AE312269732AA004E266B /* InvestimentsListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2AE311269732AA004E266B /* InvestimentsListInteractor.swift */; };
 		ED2AE31626973D40004E266B /* TrendingElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2AE31526973D40004E266B /* TrendingElement.swift */; };
@@ -39,6 +43,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ED1C37F4269F2A9C00B4D9FF /* InvestimentCardInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestimentCardInteractor.swift; sourceTree = "<group>"; };
+		ED1C37F7269F335D00B4D9FF /* HistoricalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalData.swift; sourceTree = "<group>"; };
+		ED1C37FB269F3A3F00B4D9FF /* InvestimentCardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestimentCardModel.swift; sourceTree = "<group>"; };
 		ED2AE30E26972EF1004E266B /* QueryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryService.swift; sourceTree = "<group>"; };
 		ED2AE311269732AA004E266B /* InvestimentsListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestimentsListInteractor.swift; sourceTree = "<group>"; };
 		ED2AE31526973D40004E266B /* TrendingElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingElement.swift; sourceTree = "<group>"; };
@@ -77,12 +84,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED1C37F1269F1CCB00B4D9FF /* MobileAnalyticsChartSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ED1C37F3269F2A8400B4D9FF /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				ED1C37F4269F2A9C00B4D9FF /* InvestimentCardInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		ED1C37FA269F3A2F00B4D9FF /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				ED1C37FB269F3A3F00B4D9FF /* InvestimentCardModel.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
 		ED2AE30D26972E57004E266B /* InvestimentApi */ = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +121,7 @@
 			children = (
 				ED2AE31526973D40004E266B /* TrendingElement.swift */,
 				ED2AE31926973E61004E266B /* Quote.swift */,
+				ED1C37F7269F335D00B4D9FF /* HistoricalData.swift */,
 			);
 			path = InvestimentObjects;
 			sourceTree = "<group>";
@@ -238,6 +263,8 @@
 		EDA04D8326724AD30065576A /* InvestimentCard */ = {
 			isa = PBXGroup;
 			children = (
+				ED1C37FA269F3A2F00B4D9FF /* Entity */,
+				ED1C37F3269F2A8400B4D9FF /* Interactor */,
 				ED5A1BBC269DED84007A3C76 /* Configurator */,
 				ED5A1BB7269DCB24007A3C76 /* Presenter */,
 				ED5A1BB6269DCB18007A3C76 /* View */,
@@ -288,6 +315,9 @@
 			dependencies = (
 			);
 			name = YandexInvestiments;
+			packageProductDependencies = (
+				ED1C37F0269F1CCB00B4D9FF /* MobileAnalyticsChartSwift */,
+			);
 			productName = YandexInvestiments;
 			productReference = EDA04D5B266FCBBE0065576A /* YandexInvestiments.app */;
 			productType = "com.apple.product-type.application";
@@ -315,6 +345,9 @@
 				Base,
 			);
 			mainGroup = EDA04D52266FCBBE0065576A;
+			packageReferences = (
+				ED1C37EF269F1CCB00B4D9FF /* XCRemoteSwiftPackageReference "mobile-analytics-chart-swift" */,
+			);
 			productRefGroup = EDA04D5C266FCBBE0065576A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -355,6 +388,8 @@
 				ED5A1BB9269DCB35007A3C76 /* InvestimentPresenter.swift in Sources */,
 				ED9AE14E269755CE00745E4A /* InvestimentModel.swift in Sources */,
 				ED8124D9269C90990075BC35 /* InvestimentsListConfigurator.swift in Sources */,
+				ED1C37F5269F2A9C00B4D9FF /* InvestimentCardInteractor.swift in Sources */,
+				ED1C37FC269F3A3F00B4D9FF /* InvestimentCardModel.swift in Sources */,
 				EDAC314B26739474009DA903 /* CardViewCell.swift in Sources */,
 				EDA04D61266FCBBE0065576A /* SceneDelegate.swift in Sources */,
 				EDA04D802670F50C0065576A /* InvestimentCollectionCell.swift in Sources */,
@@ -366,6 +401,7 @@
 				EDAC313F2673840D009DA903 /* SuggestionsViewController.swift in Sources */,
 				ED2AE31D2697538C004E266B /* InvestimentsListPresenter.swift in Sources */,
 				ED5A1BBE269DEDA1007A3C76 /* InvestimentConfigurator.swift in Sources */,
+				ED1C37F8269F335D00B4D9FF /* HistoricalData.swift in Sources */,
 				ED2AE31A26973E61004E266B /* Quote.swift in Sources */,
 				ED2AE31626973D40004E266B /* TrendingElement.swift in Sources */,
 			);
@@ -569,6 +605,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		ED1C37EF269F1CCB00B4D9FF /* XCRemoteSwiftPackageReference "mobile-analytics-chart-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yoomoney-tech/mobile-analytics-chart-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		ED1C37F0269F1CCB00B4D9FF /* MobileAnalyticsChartSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ED1C37EF269F1CCB00B4D9FF /* XCRemoteSwiftPackageReference "mobile-analytics-chart-swift" */;
+			productName = MobileAnalyticsChartSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EDA04D53266FCBBE0065576A /* Project object */;
 }
