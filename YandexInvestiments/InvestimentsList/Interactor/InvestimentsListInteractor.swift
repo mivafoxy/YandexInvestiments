@@ -56,6 +56,8 @@ class InvestimentsListInteractor: InvestimentsListInteractorInput {
                                         quote.shortName,
                                         quote.currency)
 
+                                self.setTicketFavoriteIfNeeded(model: investimentModel)
+                                
                                 self.investimentsList.append(investimentModel)
                             }
                             
@@ -74,6 +76,18 @@ class InvestimentsListInteractor: InvestimentsListInteractorInput {
             DispatchQueue.main.async {
                 self.presenter.stocksLoaded(tickers: self.investimentsList)
             }
+        }
+    }
+    
+    public func setTicketFavoriteIfNeeded(model: InvestimentModel) {
+        let entities = CoreDataService.loadDataFromDb()
+        
+        let hasModelInEntities = entities.contains { entity in
+            return entity.name == model.symbol
+        }
+        
+        if hasModelInEntities {
+            model.isFavourite = true
         }
     }
     

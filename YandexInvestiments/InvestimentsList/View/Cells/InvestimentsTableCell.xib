@@ -16,13 +16,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="345" height="68"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tKT-PX-0Sn">
-                        <rect key="frame" x="8" y="8" width="52" height="52"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="52" id="YXm-Aq-pBd"/>
-                            <constraint firstAttribute="height" constant="52" id="j4E-h4-RpT"/>
-                        </constraints>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pDb-TM-PxH">
                         <rect key="frame" x="72" y="14" width="44" height="24"/>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -33,7 +26,7 @@
                         <rect key="frame" x="122" y="17" width="16" height="16"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="16" id="Sb4-ca-J2P"/>
-                            <constraint firstAttribute="width" constant="16" id="mfR-fe-Vnr"/>
+                            <constraint firstAttribute="width" constant="16" id="XoB-5o-Ips"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b2O-oF-dKS">
@@ -57,24 +50,47 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d9g-gu-vWO">
+                        <rect key="frame" x="8" y="8" width="52" height="52"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="L" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="svQ-vY-zRj">
+                                <rect key="frame" x="0.0" y="6" width="52" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.99953407049999998" green="0.98835557699999999" blue="0.47265523669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="52" id="8XP-dX-az5"/>
+                            <constraint firstItem="svQ-vY-zRj" firstAttribute="top" secondItem="d9g-gu-vWO" secondAttribute="top" constant="6" id="FHA-21-upE"/>
+                            <constraint firstAttribute="bottom" secondItem="svQ-vY-zRj" secondAttribute="bottom" constant="5" id="FPL-vi-Elv"/>
+                            <constraint firstAttribute="trailing" secondItem="svQ-vY-zRj" secondAttribute="trailing" id="FhR-AN-WGK"/>
+                            <constraint firstItem="svQ-vY-zRj" firstAttribute="leading" secondItem="d9g-gu-vWO" secondAttribute="leading" id="PQz-gf-cBT"/>
+                            <constraint firstAttribute="height" constant="52" id="XD9-pA-osG"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="tKT-PX-0Sn" secondAttribute="bottom" constant="8" id="CBn-bn-pgn"/>
-                    <constraint firstItem="Vp4-VS-Jbh" firstAttribute="leading" secondItem="pDb-TM-PxH" secondAttribute="trailing" constant="6" id="Fxx-GB-ja3"/>
+                    <constraint firstItem="Vp4-VS-Jbh" firstAttribute="leading" secondItem="pDb-TM-PxH" secondAttribute="trailing" constant="6" id="4jo-Ni-ScH"/>
+                    <constraint firstItem="j0o-iC-AfP" firstAttribute="leading" secondItem="d9g-gu-vWO" secondAttribute="trailing" constant="12" id="8aJ-Gb-Tsv"/>
                     <constraint firstItem="pDb-TM-PxH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="JCq-qk-zoF"/>
                     <constraint firstItem="j0o-iC-AfP" firstAttribute="top" secondItem="pDb-TM-PxH" secondAttribute="bottom" id="LGe-DB-ko8"/>
-                    <constraint firstItem="pDb-TM-PxH" firstAttribute="leading" secondItem="tKT-PX-0Sn" secondAttribute="trailing" constant="12" id="TQn-cN-5lh"/>
+                    <constraint firstItem="d9g-gu-vWO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="Pf3-8Z-d8V"/>
                     <constraint firstItem="oe0-1q-92f" firstAttribute="top" secondItem="b2O-oF-dKS" secondAttribute="bottom" id="U57-bd-eia"/>
+                    <constraint firstItem="d9g-gu-vWO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="VWP-ND-8Nv"/>
                     <constraint firstAttribute="bottom" secondItem="pDb-TM-PxH" secondAttribute="bottom" constant="30" id="ZNN-y4-hzj"/>
                     <constraint firstAttribute="bottom" secondItem="j0o-iC-AfP" secondAttribute="bottom" constant="14" id="Zbq-Ud-sY4"/>
+                    <constraint firstItem="pDb-TM-PxH" firstAttribute="leading" secondItem="d9g-gu-vWO" secondAttribute="trailing" constant="12" id="ePV-5Z-hhe"/>
                     <constraint firstItem="b2O-oF-dKS" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="l2g-DF-UM2"/>
                     <constraint firstItem="Vp4-VS-Jbh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="17" id="m94-2u-axz"/>
-                    <constraint firstItem="tKT-PX-0Sn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="mZy-zE-UzY"/>
                     <constraint firstAttribute="trailing" secondItem="oe0-1q-92f" secondAttribute="trailing" constant="12" id="mfw-qa-UN3"/>
-                    <constraint firstAttribute="bottom" secondItem="Vp4-VS-Jbh" secondAttribute="bottom" constant="35" id="qgz-QP-3Su"/>
                     <constraint firstAttribute="trailing" secondItem="b2O-oF-dKS" secondAttribute="trailing" constant="17" id="uXB-FN-TPW"/>
-                    <constraint firstItem="tKT-PX-0Sn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="x70-ay-8mn"/>
-                    <constraint firstItem="j0o-iC-AfP" firstAttribute="leading" secondItem="tKT-PX-0Sn" secondAttribute="trailing" constant="12" id="zg8-6D-P5W"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -84,7 +100,8 @@
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
             <connections>
-                <outlet property="companyIcon" destination="tKT-PX-0Sn" id="Kxy-3u-rFW"/>
+                <outlet property="companyLabel" destination="svQ-vY-zRj" id="7xj-qw-Jfg"/>
+                <outlet property="companyLabelView" destination="d9g-gu-vWO" id="6B4-tC-WAi"/>
                 <outlet property="companyName" destination="j0o-iC-AfP" id="tUd-3e-NQS"/>
                 <outlet property="difference" destination="oe0-1q-92f" id="pfP-uM-49O"/>
                 <outlet property="favouriteIcon" destination="Vp4-VS-Jbh" id="38t-dB-LeZ"/>

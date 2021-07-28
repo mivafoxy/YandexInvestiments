@@ -9,7 +9,8 @@ import UIKit
 
 class InvestimentsTableCell: UITableViewCell {
 
-    @IBOutlet weak var companyIcon: UIImageView!
+    @IBOutlet weak var companyLabelView: UIView!
+    @IBOutlet weak var companyLabel: UILabel!
     @IBOutlet weak var investimentName: UILabel!
     @IBOutlet weak var companyName: UILabel!
     @IBOutlet weak var favouriteIcon: UIImageView!
@@ -22,8 +23,12 @@ class InvestimentsTableCell: UITableViewCell {
         self.selectionStyle = .none
         self.model = model
         
-        companyIcon.backgroundColor = .red
-        companyIcon.tintColor = .red
+        guard let companyName = model.companyName else { return }
+        
+        companyLabel.text = "\(companyName[companyName.startIndex])"
+        companyLabel.sizeToFit()
+        
+        companyLabelView.backgroundColor = getRandomColor()
         
         self.investimentName.text = model.symbol
         self.investimentName.sizeToFit()
@@ -31,8 +36,12 @@ class InvestimentsTableCell: UITableViewCell {
         self.companyName.text = model.companyName
         self.companyName.sizeToFit()
         
-        favouriteIcon.backgroundColor = .blue
-        favouriteIcon.tintColor = .blue
+        if model.isFavourite! {
+            self.favouriteIcon.image = UIImage(systemName: "star.fill")
+        } else {
+            self.favouriteIcon.image = UIImage(systemName: "star")
+        }
+        
         
         self.price.text = model.regularPrice
         self.price.sizeToFit()
@@ -45,5 +54,10 @@ class InvestimentsTableCell: UITableViewCell {
         } else {
             self.difference.textColor = .red
         }
+    }
+    
+    private func getRandomColor() -> UIColor {
+        let supportedColors: [UIColor] = [ .yellow, .blue, .brown, .cyan, .magenta, .orange ]
+        return supportedColors.randomElement()!
     }
 }

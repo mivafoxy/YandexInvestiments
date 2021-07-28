@@ -9,7 +9,8 @@ import Foundation
 
 class QueryService {
     static let headers = [
-        "X-Mboum-Secret": "bRxV1i7evGkMNYX0VifI9oYjZQjMXvQIthOFa2Yu7RCLgVlH6kp5O6KOTt4C"
+        //"X-Mboum-Secret": "bRxV1i7evGkMNYX0VifI9oYjZQjMXvQIthOFa2Yu7RCLgVlH6kp5O6KOTt4C"
+        "X-Mboum-Secret" : "EokwRzOTYlzWQ8hjE7bxGm932uGbOBsngomkpXraryds7eVnSXSNfS1SrQrv"
     ]
     
     static func getMarketStockCollections(_ completion: ((Data) -> (Void))?) {

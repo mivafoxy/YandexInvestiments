@@ -40,13 +40,6 @@ class InvestimentsListPresenter: InvestimentsListPresenterInput {
     
     func stocksLoaded(tickers: [InvestimentModel]) {
         models = tickers
-        
-        for i in 0..<models.endIndex {
-            if i%2 == 0 {
-                models[i].isFavourite = true
-            }
-        }
-        
         view.showStocks()
     }
     

@@ -40,6 +40,9 @@
 		EDAC314B26739474009DA903 /* CardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDAC314926739474009DA903 /* CardViewCell.swift */; };
 		EDAC314C26739474009DA903 /* CardViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDAC314A26739474009DA903 /* CardViewCell.xib */; };
 		EDE0F30E2678E79E0088AA67 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE0F30D2678E79E0088AA67 /* UIView+Extension.swift */; };
+		EDF4FC6726B1961600AF453C /* FavoriteTickets.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EDF4FC6526B1961600AF453C /* FavoriteTickets.xcdatamodeld */; };
+		EDF4FC6B26B198B500AF453C /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF4FC6A26B198B500AF453C /* CoreDataService.swift */; };
+		EDF4FC6F26B198EC00AF453C /* TicketEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF4FC6E26B198EC00AF453C /* TicketEntity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +80,9 @@
 		EDAC314926739474009DA903 /* CardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewCell.swift; sourceTree = "<group>"; };
 		EDAC314A26739474009DA903 /* CardViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardViewCell.xib; sourceTree = "<group>"; };
 		EDE0F30D2678E79E0088AA67 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		EDF4FC6626B1961600AF453C /* FavoriteTickets.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavoriteTickets.xcdatamodel; sourceTree = "<group>"; };
+		EDF4FC6A26B198B500AF453C /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
+		EDF4FC6E26B198EC00AF453C /* TicketEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketEntity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +239,7 @@
 		EDA04D5D266FCBBE0065576A /* YandexInvestiments */ = {
 			isa = PBXGroup;
 			children = (
+				EDF4FC6926B1989B00AF453C /* CoreDataService */,
 				ED2AE30D26972E57004E266B /* InvestimentApi */,
 				EDE0F30B2678E7720088AA67 /* Commons */,
 				EDAC313D267383CD009DA903 /* Suggestions */,
@@ -243,6 +250,7 @@
 				EDA04D67266FCBBF0065576A /* Assets.xcassets */,
 				EDA04D69266FCBBF0065576A /* LaunchScreen.storyboard */,
 				EDA04D6C266FCBBF0065576A /* Info.plist */,
+				EDF4FC6526B1961600AF453C /* FavoriteTickets.xcdatamodeld */,
 			);
 			path = YandexInvestiments;
 			sourceTree = "<group>";
@@ -297,6 +305,23 @@
 				EDE0F30D2678E79E0088AA67 /* UIView+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		EDF4FC6926B1989B00AF453C /* CoreDataService */ = {
+			isa = PBXGroup;
+			children = (
+				EDF4FC6D26B198E000AF453C /* Entities */,
+				EDF4FC6A26B198B500AF453C /* CoreDataService.swift */,
+			);
+			path = CoreDataService;
+			sourceTree = "<group>";
+		};
+		EDF4FC6D26B198E000AF453C /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				EDF4FC6E26B198EC00AF453C /* TicketEntity.swift */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -384,6 +409,7 @@
 				EDA04D63266FCBBE0065576A /* InvestimentsViewController.swift in Sources */,
 				EDA04D5F266FCBBE0065576A /* AppDelegate.swift in Sources */,
 				ED2AE312269732AA004E266B /* InvestimentsListInteractor.swift in Sources */,
+				EDF4FC6726B1961600AF453C /* FavoriteTickets.xcdatamodeld in Sources */,
 				EDA04D8E26724BE50065576A /* InvestimentViewController.swift in Sources */,
 				ED5A1BB9269DCB35007A3C76 /* InvestimentPresenter.swift in Sources */,
 				ED9AE14E269755CE00745E4A /* InvestimentModel.swift in Sources */,
@@ -397,9 +423,11 @@
 				EDA04D7B2670E6EA0065576A /* InvestimentsTableCell.swift in Sources */,
 				ED2AE30F26972EF1004E266B /* QueryService.swift in Sources */,
 				EDE0F30E2678E79E0088AA67 /* UIView+Extension.swift in Sources */,
+				EDF4FC6B26B198B500AF453C /* CoreDataService.swift in Sources */,
 				ED8124DF269CA18F0075BC35 /* InvestimentsListRouter.swift in Sources */,
 				EDAC313F2673840D009DA903 /* SuggestionsViewController.swift in Sources */,
 				ED2AE31D2697538C004E266B /* InvestimentsListPresenter.swift in Sources */,
+				EDF4FC6F26B198EC00AF453C /* TicketEntity.swift in Sources */,
 				ED5A1BBE269DEDA1007A3C76 /* InvestimentConfigurator.swift in Sources */,
 				ED1C37F8269F335D00B4D9FF /* HistoricalData.swift in Sources */,
 				ED2AE31A26973E61004E266B /* Quote.swift in Sources */,
@@ -624,6 +652,19 @@
 			productName = MobileAnalyticsChartSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		EDF4FC6526B1961600AF453C /* FavoriteTickets.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EDF4FC6626B1961600AF453C /* FavoriteTickets.xcdatamodel */,
+			);
+			currentVersion = EDF4FC6626B1961600AF453C /* FavoriteTickets.xcdatamodel */;
+			path = FavoriteTickets.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = EDA04D53266FCBBE0065576A /* Project object */;
 }

@@ -6,6 +6,10 @@
 //
 
 import UIKit
+import AddressBookUI
+import AddressBook
+import ContactsUI
+import Contacts
 
 protocol InvestimentsView: class {
     var presenter: InvestimentsListPresenterInput? { get set }
