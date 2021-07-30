@@ -18,6 +18,7 @@ class InvestimentsTableCell: UITableViewCell {
     @IBOutlet weak var difference: UILabel!
     
     public var model: InvestimentModel?
+    public var viewDelegate: InvestimentsView?
     
     public func setup(model: InvestimentModel) {
         self.selectionStyle = .none
@@ -54,6 +55,18 @@ class InvestimentsTableCell: UITableViewCell {
         } else {
             self.difference.textColor = .red
         }
+        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(favouriteButtonClicked))
+        favouriteIcon.addGestureRecognizer(gesture)
+        favouriteIcon.isUserInteractionEnabled = true
+    }
+    
+    @objc private func favouriteButtonClicked() {
+        guard let model = model else {
+            return
+        }
+        
+        viewDelegate?.updateFavouriteView(model: model)
     }
     
     private func getRandomColor() -> UIColor {

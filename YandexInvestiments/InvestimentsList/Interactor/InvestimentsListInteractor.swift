@@ -9,6 +9,8 @@ import Foundation
 
 protocol InvestimentsListInteractorInput {
     func loadInvestimentsCollections()
+    func setFavouriteTicker(model: InvestimentModel)
+    func removeFavouriteTicker(model: InvestimentModel)
 }
 
 class InvestimentsListInteractor: InvestimentsListInteractorInput {
@@ -79,7 +81,23 @@ class InvestimentsListInteractor: InvestimentsListInteractorInput {
         }
     }
     
-    public func setTicketFavoriteIfNeeded(model: InvestimentModel) {
+    public func setFavouriteTicker(model: InvestimentModel) {
+        guard let modelName = model.symbol else {
+            return
+        }
+        
+        CoreDataService.save(name: modelName)
+    }
+    
+    func removeFavouriteTicker(model: InvestimentModel) {
+        guard let modelName = model.symbol else {
+            return
+        }
+        
+        CoreDataService.delete(name: modelName)
+    }
+    
+    private func setTicketFavoriteIfNeeded(model: InvestimentModel) {
         let entities = CoreDataService.loadDataFromDb()
         
         let hasModelInEntities = entities.contains { entity in

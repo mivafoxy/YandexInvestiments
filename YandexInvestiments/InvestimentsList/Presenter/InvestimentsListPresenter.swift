@@ -16,6 +16,7 @@ protocol InvestimentsListPresenterInput: class {
     func getStocks() -> [InvestimentModel]
     func stocksFiltered(with text: String)
     func searchCancelled()
+    func tickerWasFavorited(model: InvestimentModel)
 }
 
 class InvestimentsListPresenter: InvestimentsListPresenterInput {
@@ -80,6 +81,22 @@ class InvestimentsListPresenter: InvestimentsListPresenterInput {
     
     func searchCancelled() {
         isFilteringView = false
+        view.showStocks()
+    }
+    
+    func tickerWasFavorited(model: InvestimentModel) {
+        guard let isFavourite = model.isFavourite else {
+            return
+        }
+        
+        if !isFavourite {
+            interactor?.setFavouriteTicker(model: model)
+            model.isFavourite = true
+        } else {
+            interactor?.removeFavouriteTicker(model: model)
+            model.isFavourite = false
+        }
+        
         view.showStocks()
     }
     

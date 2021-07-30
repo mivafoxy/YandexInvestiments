@@ -14,6 +14,7 @@ import Contacts
 protocol InvestimentsView: class {
     var presenter: InvestimentsListPresenterInput? { get set }
     func showStocks()
+    func updateFavouriteView(model: InvestimentModel)
 }
 
 class InvestimentsViewController: UIViewController {
@@ -113,6 +114,10 @@ extension InvestimentsViewController: InvestimentsView {
     func showStocks() {
         reloadTableView()
     }
+    
+    func updateFavouriteView(model: InvestimentModel) {
+        presenter?.tickerWasFavorited(model: model)
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -138,6 +143,7 @@ extension InvestimentsViewController: UITableViewDataSource {
         let models = presenter.getStocks()
         
         cell.setup(model: models[indexPath.item])
+        cell.viewDelegate = self
         
         if indexPath.row % 2 == 0 {
             cell.backgroundColor = .gray
@@ -152,17 +158,17 @@ extension InvestimentsViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension InvestimentsViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard
-            let cell = tableView.cellForRow(at: indexPath) as? InvestimentsTableCell,
-            let model = cell.model
-            else
-        {
-            return
-        }
-        
-        presenter?.tickerClicked(model: model)
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        guard
+//            let cell = tableView.cellForRow(at: indexPath) as? InvestimentsTableCell,
+//            let model = cell.model
+//            else
+//        {
+//            return
+//        }
+//        
+//        presenter?.tickerClicked(model: model)
+//    }
 }
 
 // MARK: - UICollectionViewDataSource
