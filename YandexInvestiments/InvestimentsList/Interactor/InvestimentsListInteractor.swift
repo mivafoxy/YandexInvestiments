@@ -56,7 +56,7 @@ class InvestimentsListInteractor: InvestimentsListInteractorInput {
                                         quote.regularMarketChange,
                                         quote.regularMarketChangePercent,
                                         quote.shortName,
-                                        quote.currency.rawValue)
+                                        quote.currency)
 
                                 self.setTicketFavoriteIfNeeded(model: investimentModel)
                                 

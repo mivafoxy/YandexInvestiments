@@ -19,31 +19,31 @@ struct Datum: Codable {
     let bid: Double
     let bidSize: Int?
     let bookValue: Double?
-    let currency: Currency
+    let currency: String
     let dividendDate, earningsTimestamp, earningsTimestampStart, earningsTimestampEnd: RegularMarketTime?
     let epsForward, epsTrailingTwelveMonths: Double?
     let exchange: String
     let exchangeDataDelayedBy: Int
-    let exchangeTimezoneName: ExchangeTimezoneName
-    let exchangeTimezoneShortName: ExchangeTimezoneShortName
+    let exchangeTimezoneName: String
+    let exchangeTimezoneShortName: String
     let fiftyDayAverage, fiftyDayAverageChange, fiftyDayAverageChangePercent, fiftyTwoWeekHigh: Double
     let fiftyTwoWeekHighChange, fiftyTwoWeekHighChangePercent, fiftyTwoWeekLow, fiftyTwoWeekLowChange: Double
     let fiftyTwoWeekLowChangePercent: Double
-    let financialCurrency: FinancialCurrency?
+    let financialCurrency: String?
     let forwardPE: Double?
     let fullExchangeName: String
     let gmtOffSetMilliseconds: Int
-    let language: Language
+    let language: String
     let longName: String?
-    let market: Market
+    let market: String
     let marketCap: Int?
-    let marketState: MarketState
+    let marketState: String
     let messageBoardID: String?
     let postMarketChange, postMarketChangePercent, postMarketPrice, postMarketTime: JSONNull?
     let priceHint: Int
     let priceToBook: Double?
-    let quoteSourceName: QuoteSourceName
-    let quoteType: QuoteType
+    let quoteSourceName: String
+    let quoteType: String
     let regularMarketChange, regularMarketChangePercent, regularMarketDayHigh, regularMarketDayLow: Double
     let regularMarketOpen, regularMarketPreviousClose, regularMarketPrice: Double
     let regularMarketTime: RegularMarketTime
@@ -63,17 +63,11 @@ struct Datum: Codable {
     }
 }
 
-enum Currency: String, Codable {
-    case hkd = "HKD"
-    case nok = "NOK"
-    case usd = "USD"
-}
-
 // MARK: - RegularMarketTime
 struct RegularMarketTime: Codable {
     let date: String
     let timezoneType: Int
-    let timezone: Timezone
+    let timezone: String
 
     enum CodingKeys: String, CodingKey {
         case date
@@ -82,55 +76,4 @@ struct RegularMarketTime: Codable {
     }
 }
 
-enum Timezone: String, Codable {
-    case the0000 = "+00:00"
-}
 
-enum ExchangeTimezoneName: String, Codable {
-    case americaNewYork = "America/New_York"
-    case asiaHongKong = "Asia/Hong_Kong"
-    case europeLondon = "Europe/London"
-    case europeOslo = "Europe/Oslo"
-}
-
-enum ExchangeTimezoneShortName: String, Codable {
-    case bst = "BST"
-    case cest = "CEST"
-    case edt = "EDT"
-    case hkt = "HKT"
-}
-
-enum FinancialCurrency: String, Codable {
-    case cny = "CNY"
-    case usd = "USD"
-}
-
-enum Language: String, Codable {
-    case enUS = "en-US"
-}
-
-enum Market: String, Codable {
-    case ccyMarket = "ccy_market"
-    case hkMarket = "hk_market"
-    case noMarket = "no_market"
-    case us24Market = "us24_market"
-    case usMarket = "us_market"
-}
-
-enum MarketState: String, Codable {
-    case postpost = "POSTPOST"
-    case pre = "PRE"
-    case regular = "REGULAR"
-}
-
-enum QuoteSourceName: String, Codable {
-    case delayedQuote = "Delayed Quote"
-    case nasdaqRealTimePrice = "Nasdaq Real Time Price"
-}
-
-enum QuoteType: String, Codable {
-    case currency = "CURRENCY"
-    case equity = "EQUITY"
-    case etf = "ETF"
-    case future = "FUTURE"
-}
