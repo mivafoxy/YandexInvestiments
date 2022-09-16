@@ -17,6 +17,10 @@ protocol InvestimentsView: class {
     func updateFavouriteView(model: InvestimentModel)
 }
 
+protocol InvestimentsSearchDelegate: class {
+    func searchTicker(with name: String)
+}
+
 class InvestimentsViewController: UIViewController {
 
     @IBOutlet weak var selectorCollectionView: UICollectionView!
@@ -67,6 +71,7 @@ class InvestimentsViewController: UIViewController {
             return
         }
         suggestionsViewController = controller
+        suggestionsViewController?.delegate = self
         controller.willMove(toParent: self)
         addChild(controller)
         
@@ -158,17 +163,17 @@ extension InvestimentsViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension InvestimentsViewController: UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        guard
-//            let cell = tableView.cellForRow(at: indexPath) as? InvestimentsTableCell,
-//            let model = cell.model
-//            else
-//        {
-//            return
-//        }
-//        
-//        presenter?.tickerClicked(model: model)
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard
+            let cell = tableView.cellForRow(at: indexPath) as? InvestimentsTableCell,
+            let model = cell.model
+            else
+        {
+            return
+        }
+        
+        presenter?.tickerClicked(model: model)
+    }
 }
 
 // MARK: - UICollectionViewDataSource
@@ -242,5 +247,18 @@ extension InvestimentsViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         removeSuggestionController()
         presenter?.searchCancelled()
+    }
+}
+
+
+// MARK: - InvestimentsSearchDelegate
+
+extension InvestimentsViewController: InvestimentsSearchDelegate {
+    public func searchTicker(with name: String) {
+        guard let searchTextField = navigationItem.searchController?.searchBar.searchTextField else {
+            return
+        }
+        
+        searchTextField.insertText(name)
     }
 }

@@ -40,12 +40,12 @@ class InvestimentCardInteractor: InvestimentCardInteractorInput {
             dispatchGroup.enter()
             QueryService.getHistoricData(of: symbol, with: interval.rawValue) { (data) in
                 let historicalData = try? JSONDecoder().decode(HistoricalData.self, from: data)
-                guard let dataItems = historicalData?.items else {
+                guard let dataItems = historicalData?.data.items else {
                     return
                 }
                 
                 for item in dataItems {
-                    let model = InvestimentCardModel(timestamp: item.key, itemOpen: item.value.itemOpen!)
+                    let model = InvestimentCardModel(timestamp: item.key, itemOpen: item.value.itemOpen)
                     models.append(model)
                 }
                 

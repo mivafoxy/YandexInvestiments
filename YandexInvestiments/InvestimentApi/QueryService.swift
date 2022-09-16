@@ -98,4 +98,32 @@ class QueryService {
         
         dataTask.resume()
     }
+    
+    static func getMostWatched(_ completion: ((Data) -> (Void))?) {
+        guard let url = NSURL(string: "https://mboum.com/api/v1/tr/trending") as URL? else {
+            return
+        }
+        
+        let request = NSMutableURLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
+        request.httpMethod = "GET"
+        request.allHTTPHeaderFields = headers
+        
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: request as URLRequest) { (data, response, error) in
+            if let error = error {
+                print(error)
+            } else {
+                let httpResponse = response as? HTTPURLResponse
+                print(httpResponse)
+                
+                guard let data = data else {
+                    return
+                }
+                
+                completion?(data)
+            }
+        }
+        
+        dataTask.resume()
+    }
 }

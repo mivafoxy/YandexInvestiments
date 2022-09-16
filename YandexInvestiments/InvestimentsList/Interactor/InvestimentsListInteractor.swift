@@ -29,13 +29,13 @@ class InvestimentsListInteractor: InvestimentsListInteractorInput {
         queue.async {
             dispatchGroup.enter()
             QueryService.getMarketStockCollections { data in
-                guard let trendings = try? JSONDecoder().decode(Trendings.self, from: data) else {
+                guard let trendings = try? JSONDecoder().decode(QuotesInfo.self, from: data) else {
                     dispatchGroup.leave()
                     return
                 }
                 print(trendings)
                 
-                for trending in trendings {
+                for trending in trendings.data {
                     
                     let tickerNames = self.getSubarrayFrom(arr: trending.quotes, bound: 50)
                     
@@ -43,12 +43,12 @@ class InvestimentsListInteractor: InvestimentsListInteractorInput {
                     for tickerSubNames in tickerNames {
                         dispatchGroup.enter()
                         QueryService.getStockQuotes(tickerNames: Array(tickerSubNames)) { data in
-                            guard let quotes = try? JSONDecoder().decode(Quotes.self, from: data) else {
+                            guard let quotes = try? JSONDecoder().decode(Quote.self, from: data) else {
                                 dispatchGroup.leave()
                                 return
                             }
                             
-                            for quote in quotes {
+                            for quote in quotes.data {
                                 let investimentModel =
                                     InvestimentModel(
                                         quote.symbol,
@@ -56,7 +56,7 @@ class InvestimentsListInteractor: InvestimentsListInteractorInput {
                                         quote.regularMarketChange,
                                         quote.regularMarketChangePercent,
                                         quote.shortName,
-                                        quote.currency)
+                                        quote.currency.rawValue)
 
                                 self.setTicketFavoriteIfNeeded(model: investimentModel)
                                 
